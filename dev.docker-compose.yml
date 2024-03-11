@@ -1,0 +1,24 @@
+version: '3'
+
+x-olaw-common:
+  &olaw-common
+  env_file:
+    - .env.example
+
+services:
+  api:
+    <<: *olaw-common
+    build: 
+      context: .
+      dockerfile: dev.api.Dockerfile
+    ports:
+      - 5000:5000
+    working_dir: /app
+    command: granian --interface asgi . --host 0.0.0.0 --port 5000
+    volumes:
+      - ./olaw:/app
+  db:
+    <<: *olaw-common
+    build:
+      context: .
+      dockerfile: dev.db.Dockerfile
