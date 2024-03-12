@@ -1,0 +1,6 @@
+features:
+    - docker deployment
+    - granian asgi interface
+    - fastapi replacement for flask
+    - llama cpp support
+    - integration with haystack
